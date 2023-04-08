@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <style>
+        .jichu{
+            border: 1px solid black;
+            height: 800px;
+            width: 600px;
+            border-radius: 50px;
+            background-color:black;
+            top: 50px;
+            left: 500px;
+            position: absolute;
+            display: flex;
+            flex-direction:column;
+            justify-content:space-around;
+        }
+        .xianshi{
+            border: 1px solid black;
+            margin-top: 50px;
+            text-align: right;
+            padding: 50px;
+            height: 260px;
+            color: white;
+            font-size: 80px;
+            overflow: auto;
+        }
+        .rain{
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+        .hang{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 5px;
+            padding: 5px;
+
+        }
+        .btn{
+            border: 1px solid gray;
+            height: 60px;
+            width: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            padding: 10px;
+            color:white;
+            background-color: gray;
+ 
+        }
+        .btn1{
+            border: 1px solid gray;
+            width: 230px;
+            height: 60px;
+            border-radius: 40px;
+            text-align:start;
+            font-size: 40px;
+            padding: 5px;
+            color: white;
+            background-color: gray;
+            
+        }
+        span{
+            color:black;
+        }
+
+        .btn2{
+            border: 1px solid gray;
+            height: 60px;
+            width: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            padding: 10px;
+            color:white;
+            background-color: orange;
+        }
+        .btn:hover{
+            background-color: gainsboro;
+        }
+        .btn1:hover{
+            background-color: gainsboro;
+        }
+       .btn2:hover{
+            background-color: white;
+            color: orange;
+       }
+
+    </style>
+    
+</head>
+<body>
+   <div class="jichu">
+    <div class="xianshi" id="Info">0</div>
+    <div class="rain">
+        <div class="hang">
+            <div class="btn"  onclick=onClicked('AC')><span>AC</span></div>
+            <div class="btn"><span>+/-</span></div>
+            <div class="btn" ><span>%</span></div>
+            <div class="btn2"  onclick="onOpclicked('/')">÷</div>
+        </div>
+        <div class="hang"> 
+            <div class="btn"  onclick="onNum09Onclicked(7)">7</div>
+            <div class="btn"  onclick="onNum09Onclicked(8)">8</div>
+            <div class="btn"  onclick="onNum09Onclicked(9)">9</div>
+            <div class="btn2"  onclick="onOpclicked('*')">×</div>
+        </div>
+        <div class="hang">
+            <div class="btn"  onclick="onNum09Onclicked(4)">4</div>
+            <div class="btn" onclick="onNum09Onclicked(5)">5</div>
+            <div class="btn"  onclick="onNum09Onclicked(6)">6</div>
+            <div class="btn2"  onclick="onOpclicked('-')">−</div>
+        </div>
+        <div class="hang">
+            <div class="btn"  onclick="onNum09Onclicked(1)">1</div>
+            <div class="btn"  onclick="onNum09Onclicked(2)">2</div>
+            <div class="btn"  onclick="onNum09Onclicked(3)">3</div>
+            <div class="btn2"  onclick="onOpclicked('+')">+</div>
+        </div>
+        <div class="hang">
+            <div class="btn1" onclick="onNum09Onclicked(0)">&nbsp&nbsp0</div>
+            <div class="btn"  onclick="onNum09Onclicked('.')" >.</div>
+            <div class="btn2"  onclick="onEqualclicked('=')">=</div>
+        </div>
+    </div>
+   </div>
+   <script>
+    var a=0   
+        b=0
+    opName="";
+    var setInfo=function(){
+     var t=""+a;
+     if(opName)t+=opName;
+     if(b)t+=b;
+     Info.innerHTML=t;
+    }
+    var onNum09Onclicked=function(num){
+     if(opName){
+         b=b*10+num
+     }else{
+         a=a*10+num
+     }
+     setInfo();
+    }
+
+    var onOpclicked=function(op){
+     if(a<1)return;
+     opName=op;
+     setInfo();
+    }
+    var onClicked=function(){
+     a=0
+     b=0
+     opName=""
+     setInfo();
+    }
+    var onEqualclicked=function(){
+     if(!opName)return;
+     if(b<0)return;
+     switch(opName){
+         case"+":
+         a=a + b;
+         break;
+         case"-":
+         a=a - b;
+         break;
+         case"*":
+         a=a * b;
+         break;
+         case"/":
+         a=a / b;
+         break;
+     }
+     b=0
+     opName="";
+     setInfo();
+    }
+
+</script>
+
+</body>
+</html>
