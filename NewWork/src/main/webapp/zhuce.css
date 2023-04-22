@@ -1,0 +1,32 @@
+form{
+    text-align: center;
+
+}
+
+#jichu{
+    height: 100%;
+    width: 100%;
+    background-color: cornflowerblue;
+}
+
+input{
+    height: 40px;
+    width: 250px;
+    border: black solid;
+}
+
+p {
+    margin-right: 170px;
+}
+
+h1{
+    text-align: center;
+}
+
+.submit{
+    color: white;
+    background-color: green;
+    border: none;
+
+
+}
